@@ -30,6 +30,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /root/proxy-server
-            export PATH=$PATH:/root/.nvm/versions/node/v18.19.0/bin/node
+            export NVM_DIR="/root/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            nvm use v18.19.0
+
+            export PATH=$NVM_DIR/versions/node/v18.19.0/bin:$PATH
+
             npm install
-            pm2 restart all
+            npx pm2 restart all
