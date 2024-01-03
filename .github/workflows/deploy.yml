@@ -30,5 +30,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ubuntu/proxy-server
-            export PATH=$PATH:/root/.nvm/versions/node/v18.19.0/bin
+            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v18.19.0/bin
             npm install
