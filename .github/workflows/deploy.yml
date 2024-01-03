@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
-          target: "/home/ubuntu/proxy-server"
+          target: "/root/proxy-server"
 
       - name: SSH into server and install dependencies
         uses: appleboy/ssh-action@master
@@ -29,6 +29,6 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/proxy-server
-            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v18.19.0/bin
+            cd /root/proxy-server
+            export PATH=$PATH:/root/.nvm/versions/node/v18.19.0/bin/node
             npm install
